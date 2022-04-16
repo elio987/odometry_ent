@@ -1,0 +1,2 @@
+odometry:puzzlebot_control:puzzlebot_gazebo:puzzlebot_nav2d:puzzlebot_world
+-DCATKIN_DEVEL_PREFIX=/home/elio987/odometry_ent/devel -DCMAKE_INSTALL_PREFIX=/home/elio987/odometry_ent/install -G Unix Makefiles

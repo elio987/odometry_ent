@@ -1,0 +1,6 @@
+<launch>
+  <node name="reference_odometry" pkg="odometry" type="reference_odometry.py"/>
+  <node name="circulo_mov" pkg="odometry" type="circulo_mov.py"/>
+  <node name="odometry_pub" pkg="odometry" type="odometry_pub.py"/>
+  <node name="odometry_error" pkg="odometry" type="odometry_error.py"/>
+</launch>

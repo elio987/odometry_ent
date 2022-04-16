@@ -1,0 +1,8 @@
+prefix=/home/elio987/odometry_ent/devel
+
+Name: puzzlebot_nav2d
+Description: Description of puzzlebot_nav2d
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

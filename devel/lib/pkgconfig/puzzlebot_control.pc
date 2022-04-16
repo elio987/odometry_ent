@@ -1,0 +1,8 @@
+prefix=/home/elio987/odometry_ent/devel
+
+Name: puzzlebot_control
+Description: Description of puzzlebot_control
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: std_msgs nav_msgs geometry_msgs sensor_msgs roscpp message_runtime
