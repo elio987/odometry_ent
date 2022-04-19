@@ -12,16 +12,16 @@ try:
     from catkin.environment_cache import generate_environment_script
 except ImportError:
     # search for catkin package in all workspaces and prepend to path
-    for workspace in '/home/elio987/mobile-robots-module/ros/catkin_odometri/devel;/home/elio987/Downloads/odometria_ent/devel;/opt/ros/melodic'.split(';'):
+    for workspace in '/opt/ros/melodic'.split(';'):
         python_path = os.path.join(workspace, 'lib/python2.7/dist-packages')
         if os.path.isdir(os.path.join(python_path, 'catkin')):
             sys.path.insert(0, python_path)
             break
     from catkin.environment_cache import generate_environment_script
 
-code = generate_environment_script('/home/elio987/odometry_ent/devel/env.sh')
+code = generate_environment_script('/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/devel/env.sh')
 
-output_filename = '/home/elio987/odometry_ent/build/catkin_generated/setup_cached.sh'
+output_filename = '/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/catkin_generated/setup_cached.sh'
 with open(output_filename, 'w') as f:
     # print('Generate script for cached setup "%s"' % output_filename)
     f.write('\n'.join(code))

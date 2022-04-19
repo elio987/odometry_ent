@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/elio987/odometry_ent/src
+CMAKE_SOURCE_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/elio987/odometry_ent/build
+CMAKE_BINARY_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build
 
 # Utility rule file for tf_generate_messages_py.
 
@@ -63,10 +63,10 @@ puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/build: tf_generate_mess
 .PHONY : puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/build
 
 puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/clean:
-	cd /home/elio987/odometry_ent/build/puzzlebot_control && $(CMAKE_COMMAND) -P CMakeFiles/tf_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_control && $(CMAKE_COMMAND) -P CMakeFiles/tf_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/clean
 
 puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/depend:
-	cd /home/elio987/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/elio987/odometry_ent/src /home/elio987/odometry_ent/src/puzzlebot_control /home/elio987/odometry_ent/build /home/elio987/odometry_ent/build/puzzlebot_control /home/elio987/odometry_ent/build/puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_control /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_control /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : puzzlebot_control/CMakeFiles/tf_generate_messages_py.dir/depend
 

@@ -1,4 +1,4 @@
-prefix=/home/elio987/odometry_ent/devel
+prefix=/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/devel
 
 Name: puzzlebot_world
 Description: Description of puzzlebot_world

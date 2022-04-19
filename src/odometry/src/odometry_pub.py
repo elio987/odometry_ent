@@ -4,8 +4,8 @@ import numpy as np
 import rospy
 from nav_msgs.msg import Odometry
 import tf2_ros
-from geometry_msgs.msg import TransformStamped,PoseWithCovariance,TwistWithCovariance
-from std_msgs.msg import Float32
+from geometry_msgs.msg import TransformStamped,PoseWithCovariance,TwistWithCovariance, Quaternion
+from std_msgs.msg import Float32, Float64
 
 class OdometryCal():
     def __init__(self):
@@ -20,6 +20,9 @@ class OdometryCal():
         rospy.Subscriber("/wl",Float32,self.wl_callback)
         #Creamos los publishers
         self.pub_odom = rospy.Publisher("/odometry", Odometry, queue_size=1)
+        self.x_pub = rospy.Publisher("/est_state/x", Float64, queue_size=1)
+        self.y_pub = rospy.Publisher("/est_state/y", Float64, queue_size=1)
+        self.th_pub = rospy.Publisher("/est_state/theta", Float64, queue_size=1)
         #Iniciamos el voctor de posición en cero
         self.pos = np.array([[0.0],[0.0],[0.0]])
         #Declaramos que vamos a mandar 20 mensajes por segundo
@@ -29,6 +32,14 @@ class OdometryCal():
         self.wr = w.data
     def wl_callback(self,w):
         self.wl = w.data
+    #funcion para convertir de angulos de la rotación en un eje w a cuaterniones
+    def get_rotation_quaternion(self, angle, w):
+        result = Quaternion()
+        result.w = np.cos(angle/2)
+        result.x = np.sin(angle/2)*w[0]
+        result.y = np.sin(angle/2)*w[1]
+        result.z = np.sin(angle/2)*w[2]
+        return result    
     #Calculamos la odometria estimada en forma de vector
     def odometry_cal(self,dt,v,w):
         """Funcion para hacer el claculo del nuevo vector de odometria a lo largo del tiempo"""
@@ -64,10 +75,19 @@ class OdometryCal():
             msg_odom = Odometry()
             msg_odom.header.stamp = rospy.Time.now()
             msg_odom.header.frame_id = "odometria_msg"
-            msg_odom.pose.pose.orientation.z = y_k[0,0]
+            msg_odom.pose.pose.orientation = self.get_rotation_quaternion(y_k[0,0], [0,0,1])
             msg_odom.pose.pose.position.x = y_k[1,0]
             msg_odom.pose.pose.position.y = y_k[2,0]
+            msg_odom.twist.twist.linear.x = v
+            msg_odom.twist.twist.angular.z = w
             self.pub_odom.publish(msg_odom)
+            # Publish the state
+            th_est = y_k[0,0]
+            x_est = y_k[1,0]
+            y_est = y_k[2,0]            
+            self.x_pub.publish(x_est)
+            self.y_pub.publish(y_est)
+            self.th_pub.publish(th_est)
             #Hacemos el sleep para asegurar los 20 mensajes por segundo.
             self.rate.sleep()
             #Actualizamos el tiempo

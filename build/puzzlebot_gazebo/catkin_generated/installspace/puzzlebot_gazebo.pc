@@ -1,4 +1,4 @@
-prefix=/home/elio987/odometry_ent/install
+prefix=/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/install
 
 Name: puzzlebot_gazebo
 Description: Description of puzzlebot_gazebo

@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"puzzlebot_control\"
 
-CXX_INCLUDES = -I/home/elio987/odometry_ent/src/puzzlebot_control/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/local/include/opencv4 
+CXX_INCLUDES = -I/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_control/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv 
 

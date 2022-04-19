@@ -28,13 +28,17 @@ class OdometryError():
     def odometry_callback(self,data):
         header = data.header.stamp
         pose = data.pose
-        self.odometry = [pose.pose.orientation.z,pose.pose.position.x,pose.pose.position.y]
+        #self.odometry = [pose.pose.orientation.z,pose.pose.position.x,pose.pose.position.y]
+        self.odometry = [euler_from_quaternion([pose.pose.orientation.x,pose.pose.orientation.y,pose.pose.orientation.z,pose.pose.orientation.w])[2],
+                                pose.pose.position.x,
+                                pose.pose.position.y]
     def true_odometry_callback(self,data):
         header = data.header.stamp
         pose = data.pose
         #Como el de la odometria real esta en un cuaternion usamos la sigueinte funcion para extraer su angulo de inclinacion en el eje z
-        self.true_odometry = [euler_from_quaternion([pose.pose.orientation.x,pose.pose.orientation.y,
-        pose.pose.orientation.z,pose.pose.orientation.w]),pose.pose.position.x,pose.pose.position.y]
+        self.true_odometry = [euler_from_quaternion([pose.pose.orientation.x,pose.pose.orientation.y,pose.pose.orientation.z,pose.pose.orientation.w])[2],
+                                pose.pose.position.x,
+                                pose.pose.position.y]
     def main(self):
         #Mientras el nodo este corriendo
         pos_x = []
@@ -42,19 +46,19 @@ class OdometryError():
         pos_x_t = []
         pos_y_t = []
         while not rospy.is_shutdown():
-            ang = self.true_odometry[0]
+            """ang = self.true_odometry[0]
             #Si el valor obtenido no es una tupla ignoramos esta iteracion
             if type(ang) == float:
                 continue
             #extraemos los tres angulos
-            x,y,z = ang
+            x,y,z = ang"""
             #Hacmos que el angulo obtenido sea siempre positivo y llegue hasta los 2pi
-            if z > 0.0:
-                z = z - 2*np.pi
+            if self.true_odometry[0] > 0.0:
+                self.true_odometry[0] = self.true_odometry[0] - 2*np.pi
             #Aqui obtenemos la rotacion de la odometria real a la calculada
             #matriz de rotacion odometria real
-            R_sr = np.array([[np.cos(z),-1*np.sin(z),0],
-                              [np.sin(z),np.cos(z),0],
+            R_sr = np.array([[np.cos(self.true_odometry[0]),-1*np.sin(self.true_odometry[0]),0],
+                              [np.sin(self.true_odometry[0]),np.cos(self.true_odometry[0]),0],
                               [0,0,1]])
             #Traslacion odometria real
             d_sr = np.array([[self.true_odometry[1]],
@@ -81,7 +85,7 @@ class OdometryError():
             pos_y_t.append(self.true_odometry[2])
             plt.plot(pos_x,pos_y)
             plt.plot(pos_x_t,pos_y_t)
-            plt.legend(["odometria calculada","odometria real"])
+            plt.legend(["posicion calculada","posicion real"])
             plt.draw()
             plt.pause(0.00001)
             plt.clf()

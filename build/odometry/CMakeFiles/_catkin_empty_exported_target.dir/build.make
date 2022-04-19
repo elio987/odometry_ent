@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/elio987/odometry_ent/src
+CMAKE_SOURCE_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/elio987/odometry_ent/build
+CMAKE_BINARY_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ odometry/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_expor
 .PHONY : odometry/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 odometry/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/elio987/odometry_ent/build/odometry && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : odometry/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 odometry/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/elio987/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/elio987/odometry_ent/src /home/elio987/odometry_ent/src/odometry /home/elio987/odometry_ent/build /home/elio987/odometry_ent/build/odometry /home/elio987/odometry_ent/build/odometry/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/odometry /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : odometry/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

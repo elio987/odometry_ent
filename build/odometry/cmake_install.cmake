@@ -1,8 +1,8 @@
-# Install script for directory: /home/elio987/odometry_ent/src/odometry
+# Install script for directory: /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/odometry
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/elio987/odometry_ent/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/elio987/odometry_ent/build/odometry/catkin_generated/installspace/odometry.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry/catkin_generated/installspace/odometry.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/odometry/cmake" TYPE FILE FILES
-    "/home/elio987/odometry_ent/build/odometry/catkin_generated/installspace/odometryConfig.cmake"
-    "/home/elio987/odometry_ent/build/odometry/catkin_generated/installspace/odometryConfig-version.cmake"
+    "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry/catkin_generated/installspace/odometryConfig.cmake"
+    "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/odometry/catkin_generated/installspace/odometryConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/odometry" TYPE FILE FILES "/home/elio987/odometry_ent/src/odometry/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/odometry" TYPE FILE FILES "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/odometry/package.xml")
 endif()
 

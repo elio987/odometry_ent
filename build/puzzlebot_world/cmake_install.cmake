@@ -1,8 +1,8 @@
-# Install script for directory: /home/elio987/odometry_ent/src/puzzlebot_world
+# Install script for directory: /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_world
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/elio987/odometry_ent/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/elio987/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_world.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_world.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/puzzlebot_world/cmake" TYPE FILE FILES
-    "/home/elio987/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_worldConfig.cmake"
-    "/home/elio987/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_worldConfig-version.cmake"
+    "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_worldConfig.cmake"
+    "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/puzzlebot_world/catkin_generated/installspace/puzzlebot_worldConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/puzzlebot_world" TYPE FILE FILES "/home/elio987/odometry_ent/src/puzzlebot_world/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/puzzlebot_world" TYPE FILE FILES "/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_world/package.xml")
 endif()
 

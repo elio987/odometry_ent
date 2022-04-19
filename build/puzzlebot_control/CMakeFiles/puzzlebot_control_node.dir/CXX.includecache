@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/elio987/odometry_ent/src/puzzlebot_control/include/puzzlebot_control/Shared.hpp
+/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_control/include/puzzlebot_control/Shared.hpp
 math.h
 -
 ros/ros.h
 -
 
-/home/elio987/odometry_ent/src/puzzlebot_control/src/puzzlebot_control_node.cpp
+/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_control/src/puzzlebot_control_node.cpp
 ros/ros.h
 -
 geometry_msgs/Twist.h
@@ -24,7 +24,7 @@ std_msgs/Float32.h
 control_msgs/JointControllerState.h
 -
 puzzlebot_control/Shared.hpp
-/home/elio987/odometry_ent/src/puzzlebot_control/src/puzzlebot_control/Shared.hpp
+/home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src/puzzlebot_control/src/puzzlebot_control/Shared.hpp
 
 /opt/ros/melodic/include/control_msgs/JointControllerState.h
 string

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/elio987/odometry_ent/src
+CMAKE_SOURCE_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/elio987/odometry_ent/build
+CMAKE_BINARY_DIR = /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build
 
 # Utility rule file for run_tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/elio987/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/elio987/odometry_ent/src /home/elio987/odometry_ent/src /home/elio987/odometry_ent/build /home/elio987/odometry_ent/build /home/elio987/odometry_ent/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/src /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build /home/jose/Documents/6toSemestre/mrm_ws/odometry_ent/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 
