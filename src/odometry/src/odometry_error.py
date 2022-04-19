@@ -5,7 +5,7 @@ import rospy
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Pose
 from std_msgs.msg import Float64
-from tf.transformations import euler_from_quaternion
+from tf.transformations import euler_from_quaternion, quaternion_matrix
 import matplotlib.pyplot as plt
 #Creamos la clase
 class OdometryError():
@@ -46,22 +46,35 @@ class OdometryError():
             #Si el valor obtenido no es una tupla ignoramos esta iteracion
             if type(ang) == float:
                 continue
-            #print(type(ang))
             #extraemos los tres angulos
             x,y,z = ang
             #Hacmos que el angulo obtenido sea siempre positivo y llegue hasta los 2pi
             if z > 0.0:
                 z = z - 2*np.pi
-            #print(self.odometry)
-            #Aqui restamos los valores de la odometria real con la calculada y publicamos sus valores.
-            error_ang = Float64()
-            error_ang.data = abs(z - self.odometry[0])
-            self.pub_ang_err.publish(error_ang)
-            error_posex = Float64()
-            error_posey = Float64()
-            error_posex.data = abs(self.true_odometry[1] - self.odometry[1])
-            error_posey.data = abs(self.true_odometry[2] - self.odometry[2])
-            #Ploteamos la posicion de las dos odometrias en x y
+            #Aqui obtenemos la rotacion de la odometria real a la calculada
+            #matriz de rotacion odometria real
+            R_sr = np.array([[np.cos(z),-1*np.sin(z),0],
+                              [np.sin(z),np.cos(z),0],
+                              [0,0,1]])
+            #Traslacion odometria real
+            d_sr = np.array([[self.true_odometry[1]],
+                             [self.true_odometry[2]],
+                             [0]])
+            #Matriz de rotacion odoemtria calculada
+            R_sc = np.array([[np.cos(self.odometry[0]),-1*np.sin(self.odometry[0]),0],
+                              [np.sin(self.odometry[0]),np.cos(self.odometry[0]),0],
+                              [0,0,1]])
+            #Traslacion odometria calculada
+            d_sc = np.array([[self.odometry[1]],
+                             [self.odometry[2]],
+                             [0]])
+            #Matriz de rotacion de la odometria real a la calculada
+            R = np.dot(R_sr.T,R_sc)
+            #Traslacion de la real a la calculada
+            d = np.dot(R_sr.T,d_sc-d_sr)
+            #Obtenemos el angulo de rotacion
+            angulo_er = np.arctan2(R[1,0],R[0,0])
+            #Plotemos la posicion
             pos_x.append(self.odometry[1])
             pos_y.append(self.odometry[2])
             pos_x_t.append(self.true_odometry[1])
@@ -70,10 +83,12 @@ class OdometryError():
             plt.plot(pos_x_t,pos_y_t)
             plt.legend(["odometria calculada","odometria real"])
             plt.draw()
-            plt.pause(0.0001)
+            plt.pause(0.00001)
             plt.clf()
-            self.pub_posx_err.publish(error_posex)
-            self.pub_posy_err.publish(error_posey)
+            #Publicamos los valores obtenidos
+            self.pub_ang_err.publish(angulo_er)
+            self.pub_posx_err.publish(d[0,0])
+            self.pub_posy_err.publish(d[1,0])
             #Usamos el sleep para pode asegurar los 20 msg por segundo.
             self.rate.sleep()
 #Si el archivo es corrido directametne y no llamado desde otro archivo corremos
