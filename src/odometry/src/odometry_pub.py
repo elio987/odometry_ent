@@ -39,7 +39,7 @@ class OdometryCal():
         result.x = np.sin(angle/2)*w[0]
         result.y = np.sin(angle/2)*w[1]
         result.z = np.sin(angle/2)*w[2]
-        return result
+        return result    
     #Calculamos la odometria estimada en forma de vector
     def odometry_cal(self,dt,v,w):
         """Funcion para hacer el claculo del nuevo vector de odometria a lo largo del tiempo"""
@@ -47,7 +47,7 @@ class OdometryCal():
         #Si el diferencialde tiempo es muy grande ignoramos esa iteracion
         if dt < 1:
             #Calculamos el nuevo vector de posicion
-            y_k1 = y_k + (np.array([[w],[v*np.cos(y_k[0,0]+(w*dt)/2)],[v*np.sin(y_k[0,0]+(w*dt)/2)]]))*dt
+            y_k1 = y_k + (np.array([[w],[v*np.cos(y_k[0,0])],[v*np.sin(y_k[0,0])]]))*dt
             #print(dt)
         else:
             y_k1 = y_k
@@ -56,6 +56,7 @@ class OdometryCal():
             y_k1[0,0] = 0.0
         #Hacemos el refresh
         self.pos = y_k1
+        return self.pos
 
     def main(self):
         #Obtenemos el tiempo inicial
@@ -64,28 +65,29 @@ class OdometryCal():
             #Calculamos la velocidad lineal y angular
             w = 0.05*((self.wr-self.wl)/0.191)
             v = 0.05*((self.wr+self.wl)/2)
+            #print(v,w)
+            #Obtenemos el tiempo final
+            tf = rospy.get_rostime().to_sec()
+            #odometria calculada
+            y_k = self.odometry_cal(tf-t0,v,w)
+            print("calculado",y_k)
             #Publicamos lo nuevos valores de odometria
             msg_odom = Odometry()
             msg_odom.header.stamp = rospy.Time.now()
             msg_odom.header.frame_id = "odometria_msg"
-            msg_odom.pose.pose.orientation = self.get_rotation_quaternion(self.pos[0,0], [0,0,1])
-            msg_odom.pose.pose.position.x = self.pos[1,0]
-            msg_odom.pose.pose.position.y = self.pos[2,0]
+            msg_odom.pose.pose.orientation = self.get_rotation_quaternion(y_k[0,0], [0,0,1])
+            msg_odom.pose.pose.position.x = y_k[1,0]
+            msg_odom.pose.pose.position.y = y_k[2,0]
             msg_odom.twist.twist.linear.x = v
             msg_odom.twist.twist.angular.z = w
             self.pub_odom.publish(msg_odom)
             # Publish the state
-            th_est = self.pos[0,0]
-            x_est = self.pos[1,0]
-            y_est = self.pos[2,0]
+            th_est = y_k[0,0]
+            x_est = y_k[1,0]
+            y_est = y_k[2,0]            
             self.x_pub.publish(x_est)
             self.y_pub.publish(y_est)
             self.th_pub.publish(th_est)
-            #Obtenemos el tiempo final
-            tf = rospy.get_rostime().to_sec()
-            #odometria calculada
-            self.odometry_cal(tf-t0,v,w)
-            #rint("calculado",y_k)
             #Hacemos el sleep para asegurar los 20 mensajes por segundo.
             self.rate.sleep()
             #Actualizamos el tiempo
