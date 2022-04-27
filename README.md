@@ -1,5 +1,6 @@
 # odometria_ent
-
+- Proyecto de un robot de tipo "Differential Drive", el cual se mueve en circulo y calculamos su odometría en la posición x, y, theta en un plano de gazebo con el metodo de euler. Además de calcular el error de la posición real del robot conforme a la calculada, calculamos la posicion real del robot usanfo tf de ROS.
+- Descarga el pryecto y pega los "packages" de ROS en tu propio envionment para que pueda compilar y ser corrido.
 1. El nodo que publica en el tópico /cmd_vel para hacer que se mueve el puzzlebot en forma de un círculo con radie 1.2m y con velocidad lineal de 0.1 m/s se implementó en el archivo /src/odometry/src/circulo_mov.py
 
 2. El nodo que publica la odometría en el tópico /odometry usando las velocidades de ambas ruedas del puzzlebot se implementó en el archivo /src/odometry/src/odometry_pub.py
